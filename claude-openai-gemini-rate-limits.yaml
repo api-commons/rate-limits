@@ -1,0 +1,611 @@
+# Rate Limits
+# These are the plans for Claude, OpenAI, and Gemini, providing a machine-readdable version of the plans for the platform.
+
+# Claude
+- name: Rate Limits
+  type: RateLimits
+  description: The rate limits for this API.
+  url: https://docs.anthropic.com/en/api/rate-limits
+  data:
+    - name: Claude Opus 4 Input Tokens
+      type: Model
+      limit: 30000
+      metric: token
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The input token limits for the Claude Opus 4 model.
+      userMultiplied: false
+    - name: Claude Opus 4 Output Tokens
+      type: Model
+      limit: 80000
+      metric: tokens
+      domains:
+        - api.anthropic.com
+      timeframe: minute
+      description: The output token limits for the Claude Opus 4 model.
+      userMultiplied: false
+    - name: Claude Opus 4 Requests
+      type: Model
+      limit: 50
+      metric: request
+      domains:
+        - api.anthropic.com
+      timeframe: minute
+      description: The request limits for the Claude Opus 4 model.
+      userMultiplied: false
+    - name: Claude Sonnet 4 Input Tokens
+      type: Model
+      limit: 30000
+      metric: token
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The input token limits for the Claude Sonnet 4 model.
+      userMultiplied: false
+    - name: Claude Sonnet 4 Output Tokens
+      type: Model
+      limit: 80000
+      metric: tokens
+      domains:
+        - api.anthropic.com
+      timeframe: minute
+      description: The output token limits for the Claude Sonnet 4 model.
+      userMultiplied: false
+    - name: Claude Sonnet 4 Requests
+      type: Model
+      limit: 50
+      metric: request
+      domains:
+        - api.anthropic.com
+      timeframe: minute
+      description: The request limits for the Claude Sonnet 4 model.
+      userMultiplied: false
+    - name: Claude Haiku 4 Input Tokens
+      type: Model
+      limit: 50000
+      metric: token
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The input token limits for the Claude Haiku 4 model.
+      userMultiplied: false
+    - name: Claude Haiku 4 Output Tokens
+      type: Model
+      limit: 10000
+      metric: tokens
+      domains:
+        - api.anthropic.com
+      timeframe: minute
+      description: The output token limits for the Claude Haiku 4 model.
+      userMultiplied: false
+    - name: Claude Haiku 4 Requests
+      type: Model
+      limit: 50
+      metric: request
+      domains:
+        - api.anthropic.com
+      timeframe: minute
+      description: The request limits for the Claude Haiku 4 model.
+      userMultiplied: false
+
+# OpenAI
+- name: Rate Limits
+  type: RateLimits
+  description: The rate limits for this API.
+  url: https://example.com/rate-limits
+  data:
+    - name: GPT-5 Token Limits
+      type: Model
+      limit: 800000
+      metric: token
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The token limits for the GPT-5 model.
+      userMultiplied: false
+    - name: GPT-5 Request Limits
+      type: Model
+      limit: 5000
+      metric: request
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The request limits for the GPT-5 model.
+      userMultiplied: false
+    - name: GPT-5 Batch Queue Limits
+      type: Model
+      limit: 100000000
+      metric: tokens
+      domains:
+        - api.openai.com
+      timeframe: day
+      description: The batch queue token limits for the GPT-5 model.
+      userMultiplied: false
+    - name: GPT-5 Mini Token Limits
+      type: Model
+      limit: 4000000
+      metric: token
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The token limits for the GPT-5 Mini model.
+      userMultiplied: false
+    - name: GPT-5 Mini Request Limits
+      type: Model
+      limit: 5000
+      metric: request
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The request limits for the GPT-5 Mini model.
+      userMultiplied: false
+    - name: GPT-5 Mini Batch Queue Limits
+      type: Model
+      limit: 40000000
+      metric: tokens
+      domains:
+        - api.openai.com
+      timeframe: day
+      description: The batch queue token limits for the GPT-5 Mini model.
+      userMultiplied: false
+    - name: GPT-5 Nano Token Limits
+      type: Model
+      limit: 4000000
+      metric: token
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The token limits for the GPT-5 Nano model.
+      userMultiplied: false
+    - name: GPT-5 Nano Request Limits
+      type: Model
+      limit: 5000
+      metric: request
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The request limits for the GPT-5 Nano model.
+      userMultiplied: false
+    - name: GPT-5 Nano Batch Queue Limits
+      type: Model
+      limit: 40000000
+      metric: tokens
+      domains:
+        - api.openai.com
+      timeframe: day
+      description: The batch queue token limits for the GPT-5 Nano model.
+      userMultiplied: false
+    - name: GPT-4.1 Token Limits
+      type: Model
+      limit: 800000
+      metric: token
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The token limits for the GPT-4.1 model.
+      userMultiplied: false
+    - name: GPT-4.1 Request Limits
+      type: Model
+      limit: 5000
+      metric: request
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The request limits for the GPT-4.1 model.
+      userMultiplied: false
+    - name: GPT-4.1 Batch Queue Limits
+      type: Model
+      limit: 100000000
+      metric: tokens
+      domains:
+        - api.openai.com
+      timeframe: day
+      description: The batch queue token limits for the GPT-4.1 model.
+      userMultiplied: false
+    - name: GPT-4.1 Mini Token Limits
+      type: Model
+      limit: 4000000
+      metric: token
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The token limits for the GPT-4.1 Mini model.
+      userMultiplied: false
+    - name: GPT-4.1 Mini Request Limits
+      type: Model
+      limit: 5000
+      metric: request
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The request limits for the GPT-4.1 Mini model.
+      userMultiplied: false
+    - name: GPT-4.1 Mini Batch Queue Limits
+      type: Model
+      limit: 40000000
+      metric: tokens
+      domains:
+        - api.openai.com
+      timeframe: day
+      description: The batch queue token limits for the GPT-4.1 Mini model.
+      userMultiplied: false
+    - name: GPT-4.1 Nano  Token Limits
+      type: Model
+      limit: 4000000
+      metric: token
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The token limits for the GPT-4.1 Nano  model.
+      userMultiplied: false
+    - name: GPT-4.1 Nano  Request Limits
+      type: Model
+      limit: 5000
+      metric: request
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The request limits for the GPT-4.1 Nano  model.
+      userMultiplied: false
+    - name: GPT-4.1 Nano  Batch Queue Limits
+      type: Model
+      limit: 40000000
+      metric: tokens
+      domains:
+        - api.openai.com
+      timeframe: day
+      description: The batch queue token limits for the GPT-4.1 Nano  model.
+      userMultiplied: false
+
+# Gemini
+- name: Rate Limits
+  type: RateLimits
+  description: >-
+    The following table lists the rate limits for all standard Gemini API
+    calls.
+  url: https://ai.google.dev/gemini-api/docs/rate-limits#current-rate-limits
+  data:
+    - name: Gemini 2.5 Pro
+      tier: Free
+      type: Model
+      limit: 5
+      metric: token
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.5 Pro
+      tier: Free
+      type: Model
+      limit: 250,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.5 Pro
+      tier: Free
+      type: Model
+      limit: 100
+      metric: request
+      timeframe: day
+      description: The requests per day (RPD).
+    - name: Gemini 2.5 Flash
+      tier: Free
+      type: Model
+      limit: 10
+      metric: token
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.5 Flash
+      tier: Free
+      type: Model
+      limit: 250,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.5 Flash
+      tier: Free
+      type: Model
+      limit: 250
+      metric: request
+      timeframe: day
+      description: The requests per day (RPD).
+    - name: "Gemini 2.5 Flash-Lite\t15"
+      tier: Free
+      type: Model
+      limit: 15
+      metric: token
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: "Gemini 2.5 Flash-Lite\t15"
+      tier: Free
+      type: Model
+      limit: 250,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: "Gemini 2.5 Flash-Lite\t15"
+      tier: Free
+      type: Model
+      limit: 1000
+      metric: request
+      timeframe: day
+      description: The requests per day (RPD).
+    - name: Gemini 2.0 Flash
+      tier: Free
+      type: Model
+      limit: 15
+      metric: token
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.0 Flash
+      tier: Free
+      type: Model
+      limit: 1,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.0 Flash
+      tier: Free
+      type: Model
+      limit: 200
+      metric: request
+      timeframe: day
+      description: The requests per day (RPD).
+    - name: Gemini 2.0 Flash-Lite
+      tier: Free
+      type: Model
+      limit: 30
+      metric: token
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.0 Flash
+      tier: Free
+      type: Model
+      limit: 1,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.0 Flash
+      tier: Free
+      type: Model
+      limit: 200
+      metric: request
+      timeframe: day
+      description: The requests per day (RPD).
+    - name: Gemini 2.5 Pro
+      tier: Tier 1
+      type: Model
+      limit: 150
+      metric: token
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.5 Pro
+      tier: Tier 1
+      type: Model
+      limit: 2,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.5 Pro
+      tier: Tier 1
+      type: Model
+      limit: 10,000
+      metric: request
+      timeframe: day
+      description: The requests per day (RPD).
+    - name: Gemini 2.5 Flash
+      tier: Tier 1
+      type: Model
+      limit: 1,000
+      metric: token
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.5 Flash
+      tier: Tier 1
+      type: Model
+      limit: 1,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.5 Flash
+      tier: Tier 1
+      type: Model
+      limit: 10,000
+      metric: request
+      timeframe: day
+      description: The requests per day (RPD).
+    - name: Gemini 2.5 Flash-Lite
+      tier: Tier 1
+      type: Model
+      limit: 4,000
+      metric: request
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.5 Flash-Lite
+      tier: Tier 1
+      type: Model
+      limit: 4,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.0 Flash
+      tier: Tier 1
+      type: Model
+      limit: 2,000
+      metric: request
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.0 Flash
+      tier: Tier 1
+      type: Model
+      limit: 4,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.0 Flash-Lite
+      tier: Tier 1
+      type: Model
+      limit: 4,000
+      metric: request
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.0 Flash
+      tier: Tier 1
+      type: Model
+      limit: 4,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.5 Pro
+      tier: Tier 2
+      type: Model
+      limit: 1,000
+      metric: token
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.5 Pro
+      tier: Tier 2
+      type: Model
+      limit: 5,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.5 Pro
+      tier: Tier 2
+      type: Model
+      limit: 50,000
+      metric: request
+      timeframe: day
+      description: The requests per day (RPD).
+    - name: Gemini 2.5 Flash
+      tier: Tier 2
+      type: Model
+      limit: 2,000
+      metric: token
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.5 Flash
+      tier: Tier 2
+      type: Model
+      limit: 3,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.5 Flash
+      tier: Tier 2
+      type: Model
+      limit: 100,000
+      metric: request
+      timeframe: day
+      description: The requests per day (RPD).
+    - name: Gemini 2.5 Flash-Lite
+      tier: Tier 2
+      type: Model
+      limit: 10,000
+      metric: request
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.5 Flash-Lite
+      tier: Tier 2
+      type: Model
+      limit: 10,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.0 Flash
+      tier: Tier 2
+      type: Model
+      limit: 10,000
+      metric: request
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.0 Flash
+      tier: Tier 2
+      type: Model
+      limit: 10,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.0 Flash-Lite
+      tier: Tier 2
+      type: Model
+      limit: 20,000
+      metric: request
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.0 Flash-Lite
+      tier: Tier 2
+      type: Model
+      limit: 10,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.5 Pro
+      tier: Tier 3
+      type: Model
+      limit: 2,000
+      metric: token
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.5 Pro
+      tier: Tier 3
+      type: Model
+      limit: 8,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.5 Flash
+      tier: Tier 3
+      type: Model
+      limit: 10,000
+      metric: token
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.5 Flash
+      tier: Tier 3
+      type: Model
+      limit: 8,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.5 Flash-Lite
+      tier: Tier 3
+      type: Model
+      limit: 30,000
+      metric: request
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.5 Flash-Lite
+      tier: Tier 3
+      type: Model
+      limit: 30,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.0 Flash
+      tier: Tier 3
+      type: Model
+      limit: 30,000
+      metric: request
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.0 Flash
+      tier: Tier 3
+      type: Model
+      limit: 30,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).
+    - name: Gemini 2.0 Flash-Lite
+      tier: Tier 3
+      type: Model
+      limit: 30,000
+      metric: request
+      timeframe: minute
+      description: The requests per minute (RPM).
+    - name: Gemini 2.0 Flash-Lite
+      tier: Tier 3
+      type: Model
+      limit: 30,000,000
+      metric: token
+      timeframe: minute
+      description: The tokens per minute (TPM).

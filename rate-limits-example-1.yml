@@ -1,0 +1,81 @@
+    - name: Claude Opus 4 Input Tokens
+      type: Model
+      limit: 30000
+      metric: token
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The input token limits for the Claude Opus 4 model.
+      userMultiplied: false
+    - name: Claude Opus 4 Output Tokens
+      type: Model
+      limit: 80000
+      metric: tokens
+      domains:
+        - api.anthropic.com
+      timeframe: minute
+      description: The output token limits for the Claude Opus 4 model.
+      userMultiplied: false
+    - name: Claude Opus 4 Requests
+      type: Model
+      limit: 50
+      metric: request
+      domains:
+        - api.anthropic.com
+      timeframe: minute
+      description: The request limits for the Claude Opus 4 model.
+      userMultiplied: false
+    - name: Claude Sonnet 4 Input Tokens
+      type: Model
+      limit: 30000
+      metric: token
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The input token limits for the Claude Sonnet 4 model.
+      userMultiplied: false
+    - name: Claude Sonnet 4 Output Tokens
+      type: Model
+      limit: 80000
+      metric: tokens
+      domains:
+        - api.anthropic.com
+      timeframe: minute
+      description: The output token limits for the Claude Sonnet 4 model.
+      userMultiplied: false
+    - name: Claude Sonnet 4 Requests
+      type: Model
+      limit: 50
+      metric: request
+      domains:
+        - api.anthropic.com
+      timeframe: minute
+      description: The request limits for the Claude Sonnet 4 model.
+      userMultiplied: false
+    - name: Claude Haiku 4 Input Tokens
+      type: Model
+      limit: 50000
+      metric: token
+      domains:
+        - api.openai.com
+      timeframe: minute
+      description: The input token limits for the Claude Haiku 4 model.
+      userMultiplied: false
+    - name: Claude Haiku 4 Output Tokens
+      type: Model
+      limit: 10000
+      metric: tokens
+      domains:
+        - api.anthropic.com
+      timeframe: minute
+      description: The output token limits for the Claude Haiku 4 model.
+      userMultiplied: false
+    - name: Claude Haiku 4 Requests
+      type: Model
+      limit: 50
+      metric: request
+      domains:
+        - api.anthropic.com
+      timeframe: minute
+      description: The request limits for the Claude Haiku 4 model.
+      userMultiplied: false
