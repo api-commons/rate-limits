@@ -1,0 +1,90 @@
+# API Commons — Rate Limits as an apis.yml property, illustrative example
+#
+# The same limits as rate-limits-example-1.yml, wrapped in the RateLimits property
+# envelope so they can be dropped straight into an apis.yml / apis.json index. This is
+# the form most providers will publish: the property points at the human-readable page,
+# and `data` carries the machine-readable version of what that page says.
+#
+# Note `url` and `source_date` on the property. A real provider's limits change; those
+# two fields are what let a consumer decide whether to trust this entry or re-read the
+# page. Still a made-up API on example.com.
+
+- name: Rate Limits
+  type: RateLimits
+  description: The published rate limits for the Example API.
+  url: https://developers.example.com/rate-limits
+  source_date: '2026-08-17'
+  data:
+
+    - name: Platform requests
+      type: Platform
+      limit: 10000
+      metric: request
+      timeframe: hour
+      description: >-
+        Requests per hour across the whole API for a single account. Exceeding it returns
+        429 with a Retry-After header.
+
+    - name: Application requests
+      type: Application
+      limit: 200
+      metric: request
+      timeframe: hour
+      userMultiplied: true
+      description: >-
+        Requests per hour per registered application, multiplied by the number of daily
+        active users the application has.
+      domains:
+        - api.example.com
+
+    - name: Free tier requests
+      type: User
+      tier: Free
+      limit: 100
+      metric: request
+      timeframe: day
+      description: Requests per day for an unpaid account.
+
+    - name: Pro tier requests
+      type: User
+      tier: Pro
+      limit: 50000
+      metric: request
+      timeframe: day
+      description: Requests per day for a paid account.
+
+- name: Model Rate Limits
+  type: RateLimits
+  description: >-
+    Per-model limits for the Example inference API, quoted separately for input and
+    output tokens because they are priced and capped separately.
+  url: https://developers.example.com/models/rate-limits
+  source_date: '2026-08-17'
+  data:
+
+    - name: example-large input tokens
+      type: Model
+      limit: 30000
+      metric: input-token
+      timeframe: minute
+      description: Input tokens per minute for the example-large model.
+      domains:
+        - api.example.com
+
+    - name: example-large output tokens
+      type: Model
+      limit: 8000
+      metric: output-token
+      timeframe: minute
+      description: Output tokens per minute for the example-large model.
+      domains:
+        - api.example.com
+
+    - name: example-large requests
+      type: Model
+      limit: 50
+      metric: request
+      timeframe: minute
+      description: Requests per minute for the example-large model.
+      domains:
+        - api.example.com

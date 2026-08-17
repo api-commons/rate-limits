@@ -1,81 +1,78 @@
-    - name: Claude Opus 4 Input Tokens
-      type: Model
-      limit: 30000
-      metric: token
-      domains:
-        - api.openai.com
-      timeframe: minute
-      description: The input token limits for the Claude Opus 4 model.
-      userMultiplied: false
-    - name: Claude Opus 4 Output Tokens
-      type: Model
-      limit: 80000
-      metric: tokens
-      domains:
-        - api.anthropic.com
-      timeframe: minute
-      description: The output token limits for the Claude Opus 4 model.
-      userMultiplied: false
-    - name: Claude Opus 4 Requests
-      type: Model
-      limit: 50
-      metric: request
-      domains:
-        - api.anthropic.com
-      timeframe: minute
-      description: The request limits for the Claude Opus 4 model.
-      userMultiplied: false
-    - name: Claude Sonnet 4 Input Tokens
-      type: Model
-      limit: 30000
-      metric: token
-      domains:
-        - api.openai.com
-      timeframe: minute
-      description: The input token limits for the Claude Sonnet 4 model.
-      userMultiplied: false
-    - name: Claude Sonnet 4 Output Tokens
-      type: Model
-      limit: 80000
-      metric: tokens
-      domains:
-        - api.anthropic.com
-      timeframe: minute
-      description: The output token limits for the Claude Sonnet 4 model.
-      userMultiplied: false
-    - name: Claude Sonnet 4 Requests
-      type: Model
-      limit: 50
-      metric: request
-      domains:
-        - api.anthropic.com
-      timeframe: minute
-      description: The request limits for the Claude Sonnet 4 model.
-      userMultiplied: false
-    - name: Claude Haiku 4 Input Tokens
-      type: Model
-      limit: 50000
-      metric: token
-      domains:
-        - api.openai.com
-      timeframe: minute
-      description: The input token limits for the Claude Haiku 4 model.
-      userMultiplied: false
-    - name: Claude Haiku 4 Output Tokens
-      type: Model
-      limit: 10000
-      metric: tokens
-      domains:
-        - api.anthropic.com
-      timeframe: minute
-      description: The output token limits for the Claude Haiku 4 model.
-      userMultiplied: false
-    - name: Claude Haiku 4 Requests
-      type: Model
-      limit: 50
-      metric: request
-      domains:
-        - api.anthropic.com
-      timeframe: minute
-      description: The request limits for the Claude Haiku 4 model.
-      userMultiplied: false
+# API Commons — Rate Limits, illustrative example
+#
+# This is a made-up API on example.com. It exists to show the shape of the schema
+# across the cases that come up in practice: a flat platform limit, a per-application
+# limit that scales with users, a tiered limit, a per-endpoint limit on an expensive
+# operation, and a concurrency limit that is not a rate at all.
+#
+# It is deliberately NOT a real provider. Real providers' limits vary by plan, change
+# without notice, and belong in a file with a url and a source_date on every entry.
+
+- name: Platform requests
+  type: Platform
+  limit: 10000
+  metric: request
+  timeframe: hour
+  description: >-
+    Requests per hour across the whole API for a single account. Exceeding it returns
+    429 with a Retry-After header.
+
+- name: Application requests
+  type: Application
+  limit: 200
+  metric: request
+  timeframe: hour
+  userMultiplied: true
+  description: >-
+    Requests per hour per registered application, multiplied by the number of daily
+    active users the application has.
+  domains:
+    - api.example.com
+
+- name: Search requests
+  type: Endpoint
+  limit: 30
+  metric: request
+  timeframe: minute
+  description: >-
+    Search is more expensive than the rest of the API and carries its own limit, counted
+    independently of the platform limit.
+  domains:
+    - api.example.com
+
+- name: Free tier requests
+  type: User
+  tier: Free
+  limit: 100
+  metric: request
+  timeframe: day
+  description: Requests per day for an unpaid account.
+
+- name: Pro tier requests
+  type: User
+  tier: Pro
+  limit: 50000
+  metric: request
+  timeframe: day
+  description: Requests per day for a paid account.
+
+- name: Bulk export bytes
+  type: Resource
+  limit: 5000000000
+  metric: byte
+  timeframe: day
+  description: >-
+    Bytes of export data per day. Written as a plain number — 5000000000, not
+    "5,000,000,000" and not "5GB".
+
+- name: Concurrent connections
+  type: Application
+  limit: 25
+  metric: concurrent-request
+  timeframe: second
+  description: >-
+    In-flight requests allowed at any one moment. A concurrency ceiling rather than a
+    rate; further requests queue rather than failing.
+  domains:
+    - api.example.com
+    - streaming.example.com

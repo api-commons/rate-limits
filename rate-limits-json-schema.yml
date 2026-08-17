@@ -1,31 +1,166 @@
-"$schema": https://json-schema.org/draft/2020-12/schema
-title: Generated schema for Root
-type: object
-properties:
-  name:
-    type: string
-  type:
-    type: string
-  limit:
-    type: number
-  metric:
-    type: string
-  domains:
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://raw.githubusercontent.com/api-commons/rate-limits/main/rate-limits-json-schema.yml
+title: API Commons Rate Limits
+description: >-
+  A machine-readable description of the rate limits an API enforces — what is being
+  counted, how much of it is allowed, over what window, and against whom. This is the
+  schema behind the RateLimits property in API Commons, so that the quotas an API
+  publishes as prose on a documentation page can be consumed by tooling and agents.
+oneOf:
+  - title: Rate limits document
+    description: A bare list of rate limit entries — a standalone rate-limits file.
     type: array
+    minItems: 1
     items:
-      type: string
-  timeframe:
-    type: string
-  description:
-    type: string
-  userMultiplied:
-    type: boolean
-required:
-- name
-- type
-- limit
-- metric
-- domains
-- timeframe
-- description
-- userMultiplied
+      $ref: '#/$defs/rateLimit'
+  - title: RateLimits properties
+    description: >-
+      One or more RateLimits properties as they appear inside an apis.yml / apis.json
+      index, each carrying its limits under `data`.
+    type: array
+    minItems: 1
+    items:
+      $ref: '#/$defs/rateLimitsProperty'
+
+$defs:
+
+  rateLimitsProperty:
+    type: object
+    additionalProperties: false
+    required:
+      - type
+      - data
+    properties:
+      name:
+        type: string
+        description: The name of the property as it appears in the index.
+      type:
+        const: RateLimits
+        description: The API Commons property type. Always RateLimits.
+      description:
+        type: string
+        description: What these limits cover.
+      url:
+        type: string
+        format: uri
+        description: The provider page these limits were read from.
+      source_date:
+        type: string
+        format: date
+        description: The date these limits were last verified against that page.
+      data:
+        type: array
+        minItems: 1
+        description: The limits themselves.
+        items:
+          $ref: '#/$defs/rateLimit'
+
+  rateLimit:
+    type: object
+    additionalProperties: false
+    required:
+      - name
+      - type
+      - limit
+      - metric
+      - timeframe
+      - description
+    properties:
+
+      name:
+        type: string
+        minLength: 1
+        description: >-
+          A human-readable name for this limit, unique within the document. Name the
+          thing being limited, not the number — "Search requests", not "100 per minute".
+
+      type:
+        description: >-
+          What the limit is scoped to. Platform limits apply across the whole API,
+          application limits are per registered client, user limits are per end user,
+          and model, endpoint, or resource limits apply to one named part of the surface.
+        enum:
+          - Platform
+          - Organization
+          - Application
+          - User
+          - Model
+          - Endpoint
+          - Resource
+
+      limit:
+        type: number
+        exclusiveMinimum: 0
+        description: >-
+          The ceiling, as a plain number. Never format it — 250000, not "250,000".
+          A quoted comma-separated string is a string, not a number, and will not validate.
+
+      metric:
+        description: >-
+          What is being counted. Prefer input-token or output-token over the ambiguous
+          token whenever a provider quotes them separately, and always use the singular.
+        enum:
+          - request
+          - token
+          - input-token
+          - output-token
+          - byte
+          - connection
+          - concurrent-request
+          - operation
+          - job
+          - event
+
+      timeframe:
+        description: The window the limit is measured over.
+        enum:
+          - second
+          - minute
+          - hour
+          - day
+          - week
+          - month
+          - year
+
+      description:
+        type: string
+        minLength: 1
+        description: >-
+          What this limit means for a consumer, in a sentence. Say what happens when it
+          is hit, if that is not obvious from the rest of the entry.
+
+      tier:
+        type: string
+        description: >-
+          The plan or usage tier this limit applies to, where limits vary by tier
+          (for example Free, Tier 1, Enterprise). Omit when the limit is universal.
+
+      domains:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        description: >-
+          The API hostnames this limit applies to. Optional — many published limits are
+          documented per model or per plan without being scoped to a host. When present,
+          the hostnames must belong to the provider whose limit this is.
+        items:
+          type: string
+          format: hostname
+
+      userMultiplied:
+        type: boolean
+        description: >-
+          Whether the ceiling scales with the number of users an application has, as
+          opposed to being a flat cap. Defaults to false when absent.
+
+      url:
+        type: string
+        format: uri
+        description: The provider page this limit was read from, so the entry can be re-verified.
+
+      source_date:
+        type: string
+        format: date
+        description: >-
+          The date this limit was last verified against the provider's own documentation.
+          Rate limits change; an entry with no date is an unverified claim.
