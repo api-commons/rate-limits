@@ -92,3 +92,12 @@ Two licenses, by kind of thing:
 - **Code** — the validator, test harness and packaging — is **[Apache-2.0](LICENSE-CODE)**.
 
 API Commons licenses **artifacts** under CC BY-NC-SA 4.0 and **code** under Apache-2.0.
+
+## Part of API Commons
+
+A machine-readable building block from **[API Commons](https://apicommons.org)** — open specifications and schemas for the APIs you produce and consume. See all building blocks at **[apicommons.org](https://apicommons.org)** and the tools at **[apicommons.org/tools](https://apicommons.org/tools/)**.
+
+**Related building blocks**
+- [plans](https://github.com/api-commons/plans) — access plans, tiers, and pricing
+- [rate-limits](https://github.com/api-commons/rate-limits) — the quotas an API enforces
+- [starters](https://github.com/api-commons/starters) — the smallest correct version of each artifact
